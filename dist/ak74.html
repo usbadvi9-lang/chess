@@ -6290,9 +6290,22 @@ function main() {
      окуляром. Без оптики — механика: глаз за целиком, взгляд сквозь
      прорезь на мушку. Зум подбирается под кратность прицела: у механики
      и коллиматора он минимальный, у ПСО — по паспортному полю зрения. */
+  /* Механика АК-74 по обмеру модели (мм): прорезь целика и вершина мушки.
+     Глаз ставится на продолжение этой линии позади целика — тогда мушка
+     сама оказывается в прорези, как в бодикаме. */
+  const IRON_REAR = new THREE.Vector3(0, mm(116), mm(-248));
+  const IRON_FRONT = new THREE.Vector3(0, mm(116), mm(-626));
+  const IRON_RELIEF = 0.20;                 // вынос глаза за целик, м
+  const IRON_RISE = 0.012;                  // подъём глаза над линией, м
+  const lookAlong = (from, to) => {
+    const q = new THREE.Quaternion();
+    q.setFromUnitVectors(new THREE.Vector3(0, 0, -1), to.clone().sub(from).normalize());
+    return q;
+  };
+
   /* Поле зрения в прицеле: см. комментарий в akm_viewer — прицел должен
      занимать часть кадра, а не весь экран. */
-  const ADS_FOV_BASE = 30;
+  const ADS_FOV_BASE = 21;
   const adsFov = (mag) => (mag > 1 ? ADS_FOV_BASE / mag : ADS_FOV_BASE);
 
   const attachSyncSight = () => {
@@ -6301,16 +6314,18 @@ function main() {
     if (a && asm.nodes.eye) {
       const e = asm.nodes.eye;
       adsAnchor.position.set(e[0] * 0.001, e[1] * 0.001, e[2] * 0.001);
+      adsAnchor.rotation.set(0, 0, 0);
       camState.fovAds = adsFov(a.magnify || 1);
       camState.optic = a;
     } else {
-      /* механика АК-74: целик Y=116, Z=-248; глаз в 330 мм позади него,
-         иначе камера оказывается внутри ствольной коробки */
-      adsAnchor.position.set(0, mm(116), mm(82));
+      /* Глаз чуть выше линии прицеливания: щека на гребне приклада. */
+      const axis = IRON_REAR.clone().sub(IRON_FRONT).normalize();
+      adsAnchor.position.copy(IRON_REAR).addScaledVector(axis, IRON_RELIEF);
+      adsAnchor.position.y += IRON_RISE;
+      adsAnchor.quaternion.copy(lookAlong(adsAnchor.position, IRON_FRONT));
       camState.fovAds = ADS_FOV_BASE;
       camState.optic = null;
     }
-    adsAnchor.rotation.set(0, 0, 0);
   };
 
   /* состояние камеры объявлено до синхронизации: она пишет fovAds */
