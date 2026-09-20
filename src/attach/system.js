@@ -226,9 +226,10 @@ module.exports = function (G, C) {
         part: slot.key + ':' + meta.reticle.part, color: meta.reticle.color, moa: meta.reticle.moa });
 
       /* узлы модуля в системе оружия */
-      if (meta.opticY !== undefined && (meta.slot === 'optic' || meta.slot === 'magnifier')) {
+      const isOptic = meta.slot === 'optic' || meta.slot === 'sideoptic';
+      if (meta.opticY !== undefined && (isOptic || meta.slot === 'magnifier')) {
         out.nodes[slot.key + 'Axis'] = xformPoint(M, [0, meta.opticY, 0]);
-        if (meta.slot === 'optic') {
+        if (isOptic) {
           out.nodes.sightAxis = out.nodes[slot.key + 'Axis'];
           /* Глаз стрелка — на удалении зрачка позади заднего среза окуляра.
              Считаем от геометрии прицела, иначе камера попадает внутрь

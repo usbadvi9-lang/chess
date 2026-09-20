@@ -335,7 +335,10 @@ module.exports = function (G, C) {
 
     liftAll(P.list, OPT_Y);
     return { parts: P.list, meta: {
-      slot: 'optic', name: 'ПСО-1 4×24', short: 'ПСО-1', opticY: OPT_Y,
+      /* ПСО-1 продаётся вместе со своим кронштейном под «ласточкин хвост»,
+         поэтому он не садится на планку Пикатинни, а занимает отдельный
+         слот бокового крепления оружия. */
+      slot: 'sideoptic', name: 'ПСО-1 4×24', short: 'ПСО-1', opticY: OPT_Y,
       /* ПСО-1: наглазник задаёт посадку глаза в 70 мм за окуляром */
       ocularZ: Z_OC + 16, eyeRelief: 70, eyeBox: 12, eyeZ: Z_OC + 86,
       exitPupil: 68, fov: 6.0, magnify: 4, glass: ['lensObj', 'lensOc'],

@@ -128,7 +128,7 @@ for (const key of OPTICS) {
 }
 for (const w of WEAPONS) {
   for (const key of OPTICS) {
-    if (key === 'scope_pso1') continue;         // ставится на боковой кронштейн
+    if (key === 'scope_pso1') continue;         // проверяется отдельно ниже
     const asm = assemble(w, Object.assign({}, SLOTS[w].defaults,
       { mount: 'mount_dustcover', 'mount.top': key }));
     ok(!!asm.nodes.eye, w + '/' + key + ': есть точка глаза');
@@ -137,6 +137,17 @@ for (const w of WEAPONS) {
     ok(asm.nodes.eye[2] > optic[5], w + '/' + key + ': глаз позади прицела',
       { eyeZ: asm.nodes.eye[2], back: optic[5] });
   }
+}
+
+/* ПСО-1 идёт со своим кронштейном и садится на «ласточкин хвост». */
+for (const w of WEAPONS) {
+  const asm = assemble(w, Object.assign({}, SLOTS[w].defaults, { sideoptic: 'scope_pso1' }));
+  ok(!!asm.activeOptic, w + ': ПСО-1 становится активным прицелом');
+  const box = slotBox(asm, 'sideoptic');
+  ok(box && asm.nodes.eye[2] > box[5], w + ': глаз позади ПСО-1',
+    { eyeZ: asm.nodes.eye && asm.nodes.eye[2], back: box && box[5] });
+  /* прицел висит слева от коробки, а не парит над ней */
+  ok(box && box[0] < -20 && box[3] < 30, w + ': ПСО-1 стоит слева от коробки', box);
 }
 
 /* --- 7. Приборы не берутся из воздуха ------------------------------------ */

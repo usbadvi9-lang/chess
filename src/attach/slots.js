@@ -25,6 +25,10 @@ module.exports = {
          от колодки), боковой — на «ласточкин хвост» слева. */
       { key: 'mount', label: 'КРОНШТЕЙН', type: 'mount', pos: [0, 98, -8], rot: [0, 0, 0],
         accepts: ['mount'], order: 1, group: 'body' },
+      /* Штатная планка «ласточкин хвост» на левой стенке коробки: на неё
+         садятся прицелы со своим кронштейном (ПСО-1 и подобные). */
+      { key: 'sideoptic', label: 'БОК. ПРИЦЕЛ', type: 'dovetail', pos: [-17, 96, -120],
+        rot: [0, 0, 0], accepts: ['sideoptic'], order: 1, group: 'body' },
       /* планка крепится на левую щеку цевья: наружная стенка x=-21,
          поэтому посадка чуть дальше и развёрнута наружу (+90° по Z) */
       { key: 'siderail', label: 'БОК. ПЛАНКА', type: 'rail', pos: [-22, 78, -400],
@@ -52,6 +56,10 @@ module.exports = {
         accepts: ['handguard'], length: 220, order: 0, group: 'body' },
       { key: 'mount', label: 'КРОНШТЕЙН', type: 'mount', pos: [0, 97, -10], rot: [0, 0, 0],
         accepts: ['mount'], order: 1, group: 'body' },
+      /* «Ласточкин хвост» АКМ: боковая планка на левой стенке (x=-17..-26,
+         y=54..80, z=-120..-60) — посадка прицелов с собственным кронштейном. */
+      { key: 'sideoptic', label: 'БОК. ПРИЦЕЛ', type: 'dovetail', pos: [-17, 94, -118],
+        rot: [0, 0, 0], accepts: ['sideoptic'], order: 1, group: 'body' },
       { key: 'siderail', label: 'БОК. ПЛАНКА', type: 'rail', pos: [-25, 54, -380],
         rot: [0, 0, Math.PI / 2], accepts: ['siderail'], length: 90, order: 1, group: 'body' },
       { key: 'mag', label: 'МАГАЗИН', type: 'well', pos: [0, 42, -120], rot: [0, 0, 0],
