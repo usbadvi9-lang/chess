@@ -109,7 +109,7 @@ module.exports = function (G, C) {
     return { parts: P.list, meta: {
       slot: 'optic', name: 'Коллиматор T-2', short: 'T-2', opticY: OPT_Y,
       /* коллиматор безпараллаксный: глаз может стоять где угодно позади */
-      ocularZ: Z1, eyeRelief: 120, eyeBox: 40, eyeZ: Z1 + 120,
+      ocularZ: Z1, eyeRelief: 210, eyeBox: 40, eyeZ: Z1 + 210,
       exitPupil: 62, magnify: 1, glass: ['lensFront', 'lensRear'],
       /* внутренний диаметр трубы — из него считается «тоннель» в прицеле */
       tubeInner: R_IN - 0.4, tubeFrontZ: Z0,
@@ -162,7 +162,7 @@ module.exports = function (G, C) {
 
     return { parts: P.list, meta: {
       slot: 'optic', name: 'Голографический EXPS3', short: 'EXPS3', opticY: MH + OPT_Y,
-      ocularZ: Z1, eyeRelief: 120, eyeBox: 46, eyeZ: Z1 + 120,
+      ocularZ: Z1, eyeRelief: 200, eyeBox: 46, eyeZ: Z1 + 200,
       exitPupil: 70, magnify: 1, glass: ['window', 'windowRear'],
       windowW: WW, windowH: WH,
       reticle: { part: 'reticle', color: O.color, moa: 68 }, weight: 320, zeroClickMOA: 0.5,
@@ -199,7 +199,7 @@ module.exports = function (G, C) {
 
     return { parts: P.list, meta: {
       slot: 'optic', name: 'Мини-коллиматор RMR', short: 'RMR', opticY: OPT_Y,
-      ocularZ: L / 2, eyeRelief: 130, eyeBox: 60, eyeZ: L / 2 + 130,
+      ocularZ: L / 2, eyeRelief: 220, eyeBox: 60, eyeZ: L / 2 + 220,
       exitPupil: 999, magnify: 1, glass: ['window'],
       reticle: { part: 'reticle', color: O.color, moa: 3.25 }, weight: 32, zeroClickMOA: 1,
       stats: { adsSpeed: -1, precision: 5, hipSpread: 0 }, foldIrons: false, canBeOffset: true } };
@@ -277,7 +277,7 @@ module.exports = function (G, C) {
     return { parts: P.list, meta: {
       slot: 'optic', name: 'Прицел 1-6x24', short: '1-6x', opticY: OPT_Y,
       /* кратный прицел: жёсткое удаление зрачка ~90 мм за окуляром */
-      ocularZ: Z_OC, eyeRelief: 90, eyeBox: 14, eyeZ: Z_OC + 90,
+      ocularZ: Z_OC, eyeRelief: 95, eyeBox: 14, eyeZ: Z_OC + 95,
       exitPupil: 88, fov: 10.5, magnify: O.mag, magRange: [1, 6],
       tubeInner: R_OC - 3.0, tubeFrontZ: Z_OBJ,
       glass: ['lensObj', 'lensOc', 'lensErector'], reticle: { part: 'reticle', color: 'red', moa: 0.8 },
