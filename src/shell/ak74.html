@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>__TITLE__</title>
+<style>
+  html,body{margin:0;height:100%;overflow:hidden;background:radial-gradient(circle at 50% 45%, #24282d 0%, #1c1f23 42%, #131619 72%, #0c0e10 100%);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Inter,Arial,sans-serif;color:#e8eaed;-webkit-user-select:none;user-select:none;touch-action:manipulation}
+  canvas{display:block}
+  #ui{position:fixed;left:0;right:0;bottom:calc(30px + env(safe-area-inset-bottom));display:flex;gap:14px;justify-content:center;align-items:center;pointer-events:none;z-index:5;flex-wrap:wrap;padding:0 14px}
+  .btn{pointer-events:auto;-webkit-appearance:none;appearance:none;border:1px solid rgba(255,255,255,.14);background:rgba(16,18,21,.55);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);color:#e8eaed;font:600 14px/1 inherit;letter-spacing:.07em;padding:14px 20px;border-radius:13px;cursor:pointer;transition:background .16s,border-color .16s,transform .1s,opacity .16s}
+  .btn:hover{background:rgba(30,34,39,.62)}
+  .btn:focus{outline:none}
+  .btn.on{background:rgba(236,186,110,.20);border-color:rgba(236,186,110,.58);color:#fff;transform:translateY(1px) scale(.986);box-shadow:0 0 0 1px rgba(236,186,110,.14)}
+  .btn.off{opacity:.45;cursor:default}
+  #hud{position:fixed;left:22px;top:20px;z-index:5;font:600 11px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.16em;color:rgba(255,255,255,.42)}
+  #hud b{display:block;font:700 30px/1.05 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.02em;color:#efd7a5;margin-top:3px}
+  #hud b.low{color:#e08b74}
+  #hud i{font-style:normal;color:rgba(255,255,255,.3)}
+  #hint{position:fixed;left:0;right:0;bottom:calc(96px + env(safe-area-inset-bottom));text-align:center;font:500 11.5px/1.7 inherit;letter-spacing:.07em;color:rgba(255,255,255,.3);z-index:4;pointer-events:none;padding:0 16px}
+  #snd{position:fixed;right:20px;bottom:20px;z-index:5;width:46px;height:46px;display:flex;align-items:center;justify-content:center;padding:0;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(16,18,21,.5);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);color:rgba(255,255,255,.7);cursor:pointer;transition:color .16s,background .16s}
+  #snd:hover{color:rgba(255,255,255,.9)}
+  #snd .slash{opacity:0}
+  #snd.muted{color:rgba(255,255,255,.35)}
+  #snd.muted .slash{opacity:1}
+  #err{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:8vw;text-align:center;font:500 22px/1.45 inherit;color:#e6a79c;white-space:pre-wrap;z-index:10}
+</style>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.166.1/build/three.module.js","three/addons/":"https://unpkg.com/three@0.166.1/examples/jsm/"}}</script>
+</head>
+<body>
+<div id="hud">ПАТРОНЫ <b id="ammo">30</b><i>5,45×39 · МАГАЗИН 30</i></div>
+<div id="ui">
+  <button class="btn" id="fire">ОГОНЬ</button>
+  <button class="btn" id="rel">ПЕРЕЗАРЯДКА</button>
+  <button class="btn" id="ads">ПРИЦЕЛ</button>
+  <button class="btn" id="mode">АВТО</button>
+</div>
+<div id="hint">ПРОБЕЛ — огонь · R — перезарядка · X — режим огня · C — фонарь · Z — ЛЦУ · F или ПКМ — прицеливание · TAB — модули</div>
+<button id="snd" aria-label="sound"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5h3.5L12 5.5v13L7.5 14.5H4z" fill="currentColor" fill-opacity=".25"/><path d="M15.5 9.2a4 4 0 0 1 0 5.6"/><path d="M18 6.8a7.5 7.5 0 0 1 0 10.4"/><path class="slash" d="M3.5 3.5l17 17"/></svg></button>
+<div id="err"></div>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+/*__ATTACH_BUNDLE__*/
+
+/*__ATTACH_UI__*/
+
+/*__ATTACH_INTEGRATION__*/
+
+/*__MODEL__*/
+
+/*__APP__*/
+</script>
+</body>
+</html>
